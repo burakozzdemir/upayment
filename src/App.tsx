@@ -1,11 +1,13 @@
-import React from 'react'
+import Header from "./components/Header";
+import Layout from "./router/Layout";
 
 const App = () => {
   return (
     <div>
-      <h3>App</h3>
+      <Header />
+      <Layout />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
