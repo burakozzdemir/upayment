@@ -1,0 +1,18 @@
+.favorite_wrapper {
+     max-width: 960px;
+
+    .favorite_card_content {
+        display: flex;
+        flex-direction: row;
+    
+        .favorite_img {
+            width: 10rem;
+        }
+    }
+
+    .favorite_delete {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+}

@@ -1,5 +1,4 @@
-
-export type Product = {
+export type NewProduct = {
     name: string,
     avatar: string,
     description: string,
@@ -7,3 +6,9 @@ export type Product = {
     category: string,
     developerEmail: string
 }
+export interface Product extends NewProduct {
+    _id: string
+}
+
+
+
