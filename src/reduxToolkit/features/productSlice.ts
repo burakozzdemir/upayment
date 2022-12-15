@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getProduct } from "../../services/ProductService";
+import { getProducts } from "../../services/ProductService";
 import { Product } from "../../types/Product";
 
 interface ProductState {
-    products: Product[] | null;
+    products: Array<Product> | null
 }
 
 const initialState: ProductState = {
@@ -14,12 +14,12 @@ export const productSlice = createSlice({
     name: "product",
     initialState,
     reducers: {
-        setProduct: (state, action: PayloadAction<Product[]>) => {
+        setProduct: (state, action: PayloadAction<Array<Product>>) => {
             state.products = action.payload
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getProduct.fulfilled, (state, action) => {
+        builder.addCase(getProducts.fulfilled, (state, action: PayloadAction<Array<Product>>) => {
             state.products = action.payload;
         });
     }

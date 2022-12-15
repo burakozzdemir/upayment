@@ -1,27 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getCategories } from '../../services/ProductService'
+import { Category } from '../../types/Category'
 
 export interface CategoriesState {
-    value: number
+    categories: Array<Category>
 }
 
 const initialState: CategoriesState = {
-    value: 0,
+    categories: []
 }
 
 export const categoriesSlice = createSlice({
     name: 'categories',
     initialState,
     reducers: {
-        categories: (state, action: PayloadAction<number>) => {
-            state.value += action.payload
-        },
+        setCategories: (state, action: PayloadAction<Array<Category>>) => {
+            state.categories = action.payload
+        }
     },
+    extraReducers: (builder) => {
+        builder.addCase(getCategories.fulfilled, (state, action: PayloadAction<Array<Category>>) => {
+            state.categories = action.payload;
+        });
+    }
 })
 
-export const { categories } = categoriesSlice.actions
-
-export const selectCategories = (state: { categories: { categories: any } }) => state.categories.categories;
-
-
 export default categoriesSlice.reducer
+export const { setCategories } = categoriesSlice.actions

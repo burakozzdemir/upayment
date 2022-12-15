@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import categoriesReducer from './features/categoriesSlice'
 import productReducer from './features/productSlice'
+import favoriteReducer from './features/favoritesSlice'
 
 
 export const store = configureStore({
     reducer: {
         categories: categoriesReducer,
-        product: productReducer
+        product: productReducer,
+        favorites: favoriteReducer
     }
 });
 
