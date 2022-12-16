@@ -32,27 +32,30 @@ const Products = (): JSX.Element => {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-12 text-center">
-            <h2 className="my-3">Products</h2>
-            <CategoryFilter handleChange={(value: string) => filterProduct(value)}/>
-            <hr />
+      { products.length  ?  <> 
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center">
+              <h2 className="my-3">Products</h2>
+              <CategoryFilter handleChange={(value: string) => filterProduct(value)}/>
+              <hr />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="container bg-muted">
-        {selectedCategory && 
+        <div className="container bg-muted">
+          {selectedCategory && 
+            <div className="row justify-content-around">
+              <div className="col-12 text-center">
+              <h4 className="my-3 text-danger">{selectedCategory} Products List</h4>
+            </div>            
+          </div>
+          }
           <div className="row justify-content-around">
-            <div className="col-12 text-center">
-            <h4 className="my-3 text-danger">{selectedCategory} Products List</h4>
-          </div>            
-         </div>
-        }
-        <div className="row justify-content-around">
-          {products.length > 0 && products.map((item: Product, index: number) => <ProductCard key={index} {...item}/>)}
-        </div>
-      </div>
+            {products.length > 0 && products.map((item: Product, index: number) => <ProductCard key={index} {...item}/>)}
+          </div>
+        </div> 
+      </> : <div className="loading">Loading...</div>
+      }
     </>
   );
 };

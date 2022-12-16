@@ -18,6 +18,7 @@ const EMPTY_PRODUCT = {
 const ProductsDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const [product, setProduct] = useState<Product>(EMPTY_PRODUCT);
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     let id: string = window.location.pathname.replace("/product", "");
@@ -30,6 +31,7 @@ const ProductsDetails = (): JSX.Element => {
   }, []);
 
   const addNewFavorite = (): void => {
+    setAdded(true);
     dispatch(addFavorite(product));
   }
 
@@ -53,9 +55,16 @@ const ProductsDetails = (): JSX.Element => {
             <p className="lead text-muted"> {product.description} </p>
             <div className="quantity-wrapper">
             </div>
-            <button className="btn btn-primary" onClick={() => addNewFavorite()}>
-              Add to Favorite
-            </button>
+            { added ?
+              <button className="btn btn-success" onClick={() => setAdded(false)}>
+                Added to Favorite
+              </button>
+              : 
+              <button className="btn btn-primary" onClick={() => addNewFavorite()}>
+                Add to Favorite
+              </button> 
+            }
+            
           </div>
         </div>
       </div >
@@ -64,6 +73,7 @@ const ProductsDetails = (): JSX.Element => {
 
   return (
     <>
+      { product._id  ?  <>
       <div className="container-py-5">
         <div className="row">
           <div className="col-12 text-center">
@@ -73,6 +83,10 @@ const ProductsDetails = (): JSX.Element => {
         </div>
       </div>
       <div>{product ? renderProductDetails() : ""}</div>
+      </> 
+      : 
+      <div className="loading">Loading...</div>
+    }
     </>
   );
 };

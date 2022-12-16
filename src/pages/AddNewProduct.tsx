@@ -4,7 +4,7 @@ import { NewProduct } from "../types/Product";
 import { createProduct, getCategories } from "../services/ProductService";
 import { useAppDispatch, useAppSelector } from "../reduxToolkit/store";
 import { Category } from "../types/Category";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const EMPTY_PRODUCT = {
   name: "",
@@ -19,7 +19,7 @@ const EMPTY_PRODUCT = {
 const AddNewProduct = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const categories: Array<Category> = useAppSelector((state: any) => state.categories.categories);
-
+  const [added, setAdded] = useState(false);
   useEffect(() => {
     dispatch(getCategories());
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,12 +50,14 @@ const AddNewProduct = (): JSX.Element => {
         .required("Required"),
     }),
     onSubmit: (values: NewProduct, action) => {
-      console.log(values);
+      setAdded(true);
+      setTimeout(() => {
+        setAdded(false);
+      }, 4000);
       var res = createProduct(values);
       if (res) {
         res.then(x => {
           action.resetForm();
-          console.log(x?.data.message)
         });
       }
     },
@@ -63,6 +65,7 @@ const AddNewProduct = (): JSX.Element => {
 
   return (
     <>
+      { added && <div className="saved">Saved ✓</div> }
       <div className="new_product">
         <h2>Add New Product</h2>
         <form onSubmit={formik.handleSubmit}>
@@ -90,7 +93,7 @@ const AddNewProduct = (): JSX.Element => {
               placeholder="Price $"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.price}
+              value={formik.values.price === 0 ? "" : formik.values.price}
             />
           </div>
 
@@ -161,10 +164,11 @@ const AddNewProduct = (): JSX.Element => {
           {formik.touched.developerEmail && formik.errors.developerEmail ? (
             <p className="new_product_required_one">{formik.errors.developerEmail}</p>
           ) : null}
-
-            <button type="submit">
-              Save
-            </button>
+          <button type="submit">
+            Save
+          </button>
+ 
+           
         </form>
       </div>
     </>
