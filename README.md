@@ -18,7 +18,7 @@
 
 ## Features and Functionality
 
-- Simple Online Shopping Web Application
+- Online Shopping Web Application
 
 ## App Flow
 
