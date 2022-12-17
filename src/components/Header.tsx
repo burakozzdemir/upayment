@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import "../index.css";
 import { Link } from "react-router-dom";
 import avatar from "../assets/images/avatar.png";
@@ -6,7 +5,7 @@ import upayments_logo from "../assets/images/upayments_logo.png";
 
 const Header = (): JSX.Element => {
   return (
-    <div>
+    <>
       <nav className="bg-gray-900">
         <div className="mx-auto max-w-7xl px- sm:px-6 lg:px-8">
           <div className="relative flex h-20 items-center justify-between">
@@ -56,7 +55,7 @@ const Header = (): JSX.Element => {
           </div>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 

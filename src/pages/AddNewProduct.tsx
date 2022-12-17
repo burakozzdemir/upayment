@@ -15,7 +15,6 @@ const EMPTY_PRODUCT = {
   developerEmail: ""
 }
 
-
 const AddNewProduct = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const categories: Array<Category> = useAppSelector((state: any) => state.categories.categories);
@@ -164,11 +163,10 @@ const AddNewProduct = (): JSX.Element => {
           {formik.touched.developerEmail && formik.errors.developerEmail ? (
             <p className="new_product_required_one">{formik.errors.developerEmail}</p>
           ) : null}
+          
           <button type="submit">
             Save
           </button>
- 
-           
         </form>
       </div>
     </>

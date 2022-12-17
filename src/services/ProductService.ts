@@ -6,7 +6,7 @@ import { Category } from "../types/Category";
 const API_URL = "https://upayments-studycase-api.herokuapp.com/api";
 
 const TOKEN =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1cmFrb3pkZW1pcjc1MEBnbWFpbC5jb20iLCJnaXRodWIiOiJodHRwczovL2dpdGh1Yi5jb20vYnVyYWtvenpkZW1pciIsImlhdCI6MTY3MDc3NjgxNywiZXhwIjoxNjcxMjA4ODE3fQ.RfTIw6KeUImu9CHvmKfrna4wx5S8cT_TOUbI1EDZD6o"
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJya296ZG1yOTJAaG90bWFpbC5jb20iLCJnaXRodWIiOiJodHRwczovL2dpdGh1Yi5jb20vYnVyYWtvenpkZW1pciIsImlhdCI6MTY3MTI4MDAzOSwiZXhwIjoxNjcxNzEyMDM5fQ.8ErfId6W-8am5ybmnO_nr658SOIWnNTyzqPIM9rfNLo"
 
 export const getProducts = createAsyncThunk<Array<Product>>(
   "api/getProducts",

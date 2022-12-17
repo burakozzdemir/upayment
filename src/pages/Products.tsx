@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from "../reduxToolkit/store";
 import { getProducts } from "../services/ProductService";
 import ProductCard from "../components/ProductCard";
 import CategoryFilter from "../components/CategoryFilter";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Product } from "../types/Product";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Products = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ const Products = (): JSX.Element => {
 
   return (
     <>
-      { products.length  ?  <> 
+      { products.length ? <> 
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">

@@ -4,7 +4,6 @@ import { Product } from "../types/Product";
 
 const ProductCard = (item: Product): JSX.Element => {
   return (
-
     <div className="card my-5" style={{ width: "18rem" }}>
       <img className="card-img-top" src={item.avatar} alt={item.name} />
       <div className="card-body text-center">

@@ -56,7 +56,7 @@ const ProductsDetails = (): JSX.Element => {
             <div className="quantity-wrapper">
             </div>
             { added ?
-              <button className="btn btn-success" onClick={() => setAdded(false)}>
+              <button className="btn btn-success" disabled onClick={() => setAdded(false)}>
                 Added to Favorite
               </button>
               : 
@@ -64,7 +64,6 @@ const ProductsDetails = (): JSX.Element => {
                 Add to Favorite
               </button> 
             }
-            
           </div>
         </div>
       </div >
@@ -73,7 +72,7 @@ const ProductsDetails = (): JSX.Element => {
 
   return (
     <>
-      { product._id  ?  <>
+      { product._id ? <>
       <div className="container-py-5">
         <div className="row">
           <div className="col-12 text-center">
